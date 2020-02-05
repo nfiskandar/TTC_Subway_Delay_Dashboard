@@ -1,10 +1,10 @@
 # Toronto Transit Commission (TTC) Subway Delays 2019
 
 ## **Team Members:**
-Nadia Iskandar
-Ivy Fong
-Shaohua Liu
-Jennifer Huynh
+- Nadia Iskandar
+- Ivy Fong
+- Shaohua Liu
+- Jennifer Huynh
 
 ## **Project Description/Outline:**
 We will create an interactive dashboard to display TTC subway delay 2019 data. Our dashboard will contain 3 views:
