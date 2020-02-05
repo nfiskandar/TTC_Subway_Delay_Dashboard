@@ -1,12 +1,12 @@
 # Toronto Transit Commission (TTC) Subway Delays 2019
 
-##**Team Members:**
+## **Team Members:**
 Nadia Iskandar
 Ivy Fong
 Shaohua Liu
 Jennifer Huynh
 
-##**Project Description/Outline:**
+## **Project Description/Outline:**
 We will create an interactive dashboard to display TTC subway delay 2019 data. Our dashboard will contain 3 views:
 
 1.	Leaflet map
@@ -23,13 +23,13 @@ We will create an interactive dashboard to display TTC subway delay 2019 data. O
 	- Y-Axis2: Average minimum delay (minutes)
 	- Dropdown filters: Subway line, month, and time of day
 
-##**Tools:**
+## **Tools:**
 We will use the following:
 1.	HTML/CSS
 2.	Flask
 3.	JavaScript
 4.	Heroku/PostgreSQL
 
-##**Data Sources:**
+## **Data Sources:**
 1.	City of Toronto Open Data - TTC monthly subway delay data: https://open.toronto.ca/dataset/ttc-subway-delay-data/
 2.	Wikipedia (multiple web pages) - TTC subway station coordinates (e.g. Bloor-Yonge station: https://en.wikipedia.org/wiki/Bloor%E2%80%93Yonge_station)
