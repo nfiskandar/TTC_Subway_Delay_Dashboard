@@ -26,6 +26,7 @@ db = SQLAlchemy(app)
 @app.route("/")
 def home():
     results = db.session.query(
+        # database.column_name
         ttc_subway_2019.date, 
         ttc_subway_2019.time, 
         ttc_subway_2019.day, 
@@ -62,13 +63,13 @@ def home():
         "day": day,
         "code": code,
         "min_delay": min_delay,
-        "min_gap": "min_gap",
-        "bound": "bound",
-        "line": "line",
-        "vehicle": "vehicle",
-        "code_info": "code_info",
-        "latitude": "latitude",
-        "longitude": "longitude"
+        "min_gap": min_gap,
+        "bound": bound,
+        "line": line,
+        "vehicle": vehicle,
+        "code_info": code_info,
+        "latitude": latitude,
+        "longitude": longitude
         }
     }]
 
