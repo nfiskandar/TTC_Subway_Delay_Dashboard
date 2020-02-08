@@ -30,13 +30,20 @@ results = ttc_subway_2019.session.query(
     ttc_subway_2019.vehicle,
     ttc_subway_2019.code_info,
     ttc_subway_2019.latitude,
-    ttc_subway_2019.longitude
+    ttc_subway_2019.longitude,
+    ttc_subway_2019.line_name,
+    ttc_subway_2019.month,
+    ttc_subway_2019.time_range,
     ).all()
 
 # create route that renders index.html template
+@app.route("/")
+def home():
+    return render_template("index.html")
+    
+# create route to query database and send jsonified results for delay data    
 @app.route("/delay")
 def delay():
-
 
     date = [result[0] for result in results]
     time = [result[1] for result in results]
@@ -76,6 +83,7 @@ def delay():
 
     return jsonify(ttc_subway_2019_data)
 
+# create route to query database and send jsonified results for map data
 @app.route("/map")
 def map():
     station = [result[3] for result in results]
