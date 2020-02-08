@@ -66,7 +66,7 @@ def delay():
     ttc_subway_2019.longitude,
     ttc_subway_2019.line_name,
     ttc_subway_2019.month,
-    ttc_subway_2019.time_range,
+    ttc_subway_2019.time_range
     ).all()
 
     date = [result[0] for result in results]
