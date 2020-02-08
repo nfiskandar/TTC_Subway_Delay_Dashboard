@@ -12,12 +12,12 @@ function average(arr){
     var numbersCnt = arr.length;
     //Return the average / mean.
     return (sum / numbersCnt);
-}
+};
 
 // Save dropdown menu text in variable
 var subway_lines = ['1: Yonge-University Line','2: Bloor-Danforth Line','3: Scarborough Line','4: Sheppard Line'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-var time_groups = ['6-9am','9am-12pm','12-3pm','3-6pm','6-9pm','9pm-1:30am'];
+var time_groups = ['5-9am','9am-12pm','12-3pm','3-6pm','6-9pm','9pm-1:30am'];
 var days = ['Monday','Tuesday','Wednesay','Thursday','Friday','Saturday','Sunday'];
 
 	/* Select dropdown menu and add options to dropdown */
