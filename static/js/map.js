@@ -1,4 +1,4 @@
-var myMap = L.map("map", {
+var mymap = L.map("map", {
     center: [45.52, -122.67],
     zoom: 13
   });
@@ -10,5 +10,26 @@ var myMap = L.map("map", {
     maxZoom: 18,
     id: "mapbox.streets",
     accessToken: API_KEY
-  }).addTo(myMap);
+  }).addTo(mymap);
   
+var path = "../data/station.csv";
+
+d3.csv (path, function(data){
+  console.log(data);
+  });
+
+  //circle on the stop
+  var circle = L.circle([45.52, -122.67], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 1000
+}).addTo(mymap);
+
+// polygon to connect stops
+var polygon = L.polygon([
+  [51.509, -0.08],
+  [51.503, -0.06],
+  [51.51, -0.047]
+]).addTo(mymap);
+polygon.bindPopup("I am a polygon.");
