@@ -364,7 +364,7 @@ function optionChanged(){
 		// Retyle graph
 		Plotly.restyle("time",time_update,[0,1]);
 		
-			/* Update day bar graph */
+			/* Update day bar graph */ 
 		
 		// Define data
 		var day_update = {
