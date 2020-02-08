@@ -40,6 +40,17 @@ class ttc_subway_2019(db.Model):
     def __repr__(self):
         return '<ttc_subway_2019 %r>' % (self.name)
 
+class station_in_line(db.Model):
+    __tablename__ = 'station_in_line'
+
+    station = db.Column(db.String(64), primary_key=True)
+    latitude = db.Column(db.String(64))
+    longitude = db.Column(db.String(64))
+    line_name = db.Column(db.String(64))
+    
+    def __repr__(self):
+        return '<station_in_line %r>' % (self.name)
+
 # create route that renders index.html template
 @app.route("/")
 def home():
@@ -69,24 +80,7 @@ def delay():
     ttc_subway_2019.time_range
     ).all()
 
-    # date = [result[0] for result in results]
-    # time = [result[1] for result in results]
-    # day = [result[2] for result in results]
-    # station = [result[3] for result in results]
-    # code = [result[4] for result in results]
-    # min_delay = [result[5] for result in results]
-    # min_gap = [result[6] for result in results]
-    # bound = [result[7] for result in results]
-    # line = [result[8] for result in results]
-    # vehicle = [result[9] for result in results]
-    # code_info = [result[10] for result in results]
-    # latitude = [result[11] for result in results]
-    # longitude = [result[12] for result in results]
-    # line_name = [result[13] for result in results]
-    # month = [result[14] for result in results]
-    # time_range = [result[15] for result in results]
-
-    ttc_subway_2019_data = [];
+    ttc_subway_2019_data = []
 
     for result in results:
         ttc_subway_2019_data.append(
@@ -111,21 +105,28 @@ def delay():
     return jsonify(ttc_subway_2019_data)
 
 # # create route to query database and send jsonified results for map data
-# @app.route("/map")
-# def map():
-#     station = [result[3] for result in results]
-#     latitude = [result[11] for result in results]
-#     longitude = [result[12] for result in results]
-#     line_name = [result[13] for result in results]
+@app.route("/map")
+def map():
 
-#     ttc_station_coordinates = [{
-#         "station" : station,
-#         "latitude": latitude,
-#         "longitude": longitude,
-#         "line_name": line_name
-#     }]
+    results = db.session.query(
+        # database.column_name
+        station_in_line.station,
+        station_in_line.latitude,
+        station_in_line.longitude,
+        station_in_line.line_name,
+        ).all()
 
-#     return jsonify(ttc_station_coordinates) 
+    station_in_line_data = []
+
+    for result in results:
+        station_in_line_data.append(
+            {"station": result[0],
+            "latitude": result[1],
+            "longitude": result[2],
+            "line_name": result[3]}
+        )
+
+    return jsonify(station_in_line_data)
 
 if __name__ == "__main__":
     app.run()
