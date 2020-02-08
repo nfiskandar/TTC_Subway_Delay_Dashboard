@@ -168,7 +168,6 @@ function init(){
 					Day: ${init_time_day_value}<br>
 					Time: ${time_groups}<br>
 					Average Delay: ${init_time_graph_avg_delay} minutes`,
-		  name: 'Number of Delays',
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
 		  type: 'scatter'
@@ -209,7 +208,6 @@ function init(){
 					Time: ${init_day_time_value}<br>
 					Day: ${day_groups}<br>
 					Number of Delays: ${init_day_graph_num_delays}`,
-		  name: 'Number of Delays',
 		  name: 'Number of Delays',
 		  type: 'scatter'
 		};
