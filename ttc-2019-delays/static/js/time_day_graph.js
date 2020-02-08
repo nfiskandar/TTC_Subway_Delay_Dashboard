@@ -70,14 +70,12 @@ function init(){
 		var init_month_value = months[0];
 		var init_time_value = time_groups[0];
 		var init_day_value = days[0];
-		var init_otu_labels = data.samples[0].otu_labels;
-		var init_sample_values = data.samples[0].sample_values;
 		
 		// Print data
-		console.log(init_subway_line);
-		console.log(init_month);
-		console.log(init_time);
-		console.log(init_day);
+		console.log(init_subway_value);
+		console.log(init_month_value);
+		console.log(init_time_value);
+		console.log(init_day_value);
 		
 			/* Filter data based on init filter values */
 		
@@ -113,7 +111,7 @@ function init(){
 			/* Calculate total number of delays and average min delay by time and day groups */
 		
 		// Calculate total number of delays for the time graph
-		var time_graph_num_delays = [];
+		var init_time_graph_num_delays = [];
 		init_time_graph_num_delays.push(Object.values(init_time_data_group1[0]).length);
 		init_time_graph_num_delays.push(Object.values(init_time_data_group2[0]).length);
 		init_time_graph_num_delays.push(Object.values(init_time_data_group3[0]).length);
@@ -122,7 +120,7 @@ function init(){
 		init_time_graph_num_delays.push(Object.values(init_time_data_group6[0]).length);
 		
 		// Calculate total number of delays for the day graph
-		var day_graph_num_delays = [];		
+		var init_day_graph_num_delays = [];		
 		init_day_graph_num_delays.push(Object.values(init_day_data_group1[0]).length);
 		init_day_graph_num_delays.push(Object.values(init_day_data_group2[0]).length);
 		init_day_graph_num_delays.push(Object.values(init_day_data_group3[0]).length);
@@ -132,7 +130,7 @@ function init(){
 		init_day_graph_num_delays.push(Object.values(init_day_data_group7[0]).length);
 		
 		// Calculate average min delay for the time graph
-		var time_graph_avg_delay = [];	
+		var init_time_graph_avg_delay = [];	
 		init_time_graph_avg_delay.push(average(Object.values(init_time_data_group1.min_delay)));
 		init_time_graph_avg_delay.push(average(Object.values(init_time_data_group2.min_delay)));
 		init_time_graph_avg_delay.push(average(Object.values(init_time_data_group3.min_delay)));
@@ -141,7 +139,7 @@ function init(){
 		init_time_graph_avg_delay.push(average(Object.values(init_time_data_group6.min_delay)));
 		
 		// Calculate average min delay for the day graph
-		var day_graph_avg_delay = [];	
+		var init_day_graph_avg_delay = [];	
 		init_day_graph_avg_delay.push(average(Object.values(init_day_data_group1.min_delay)));
 		init_day_graph_avg_delay.push(average(Object.values(init_day_data_group2.min_delay)));
 		init_day_graph_avg_delay.push(average(Object.values(init_day_data_group3.min_delay)));
@@ -310,7 +308,7 @@ function optionChanged(){
 			/* Calculate total number of delays and average min delay by time and day groups */
 		
 		// Calculate total number of delays for the time graph
-		var time_graph_num_delays = [];
+		var current_time_graph_num_delays = [];
 		current_time_graph_num_delays.push(Object.values(current_time_data_group1[0]).length);
 		current_time_graph_num_delays.push(Object.values(current_time_data_group2[0]).length);
 		current_time_graph_num_delays.push(Object.values(current_time_data_group3[0]).length);
@@ -319,7 +317,7 @@ function optionChanged(){
 		current_time_graph_num_delays.push(Object.values(current_time_data_group6[0]).length);
 		
 		// Calculate total number of delays for the day graph
-		var day_graph_num_delays = [];		
+		var current_day_graph_num_delays = [];		
 		current_day_graph_num_delays.push(Object.values(current_day_data_group1[0]).length);
 		current_day_graph_num_delays.push(Object.values(current_day_data_group2[0]).length);
 		current_day_graph_num_delays.push(Object.values(current_day_data_group3[0]).length);
@@ -329,7 +327,7 @@ function optionChanged(){
 		current_day_graph_num_delays.push(Object.values(current_day_data_group7[0]).length);
 		
 		// Calculate average min delay for the time graph
-		var time_graph_avg_delay = [];	
+		var current_time_graph_avg_delay = [];	
 		current_time_graph_avg_delay.push(average(Object.values(current_time_data_group1.min_delay)));
 		current_time_graph_avg_delay.push(average(Object.values(current_time_data_group2.min_delay)));
 		current_time_graph_avg_delay.push(average(Object.values(current_time_data_group3.min_delay)));
@@ -338,7 +336,7 @@ function optionChanged(){
 		current_time_graph_avg_delay.push(average(Object.values(current_time_data_group6.min_delay)));
 		
 		// Calculate average min delay for the day graph
-		var day_graph_avg_delay = [];	
+		var current_day_graph_avg_delay = [];	
 		current_day_graph_avg_delay.push(average(Object.values(current_day_data_group1.min_delay)));
 		current_day_graph_avg_delay.push(average(Object.values(current_day_data_group2.min_delay)));
 		current_day_graph_avg_delay.push(average(Object.values(current_day_data_group3.min_delay)));

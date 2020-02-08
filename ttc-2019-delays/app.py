@@ -69,41 +69,44 @@ def delay():
     ttc_subway_2019.time_range
     ).all()
 
-    date = [result[0] for result in results]
-    time = [result[1] for result in results]
-    day = [result[2] for result in results]
-    station = [result[3] for result in results]
-    code = [result[4] for result in results]
-    min_delay = [result[5] for result in results]
-    min_gap = [result[6] for result in results]
-    bound = [result[7] for result in results]
-    line = [result[8] for result in results]
-    vehicle = [result[9] for result in results]
-    code_info = [result[10] for result in results]
-    latitude = [result[11] for result in results]
-    longitude = [result[12] for result in results]
-    line_name = [result[13] for result in results]
-    month = [result[14] for result in results]
-    time_range = [result[15] for result in results]
+    # date = [result[0] for result in results]
+    # time = [result[1] for result in results]
+    # day = [result[2] for result in results]
+    # station = [result[3] for result in results]
+    # code = [result[4] for result in results]
+    # min_delay = [result[5] for result in results]
+    # min_gap = [result[6] for result in results]
+    # bound = [result[7] for result in results]
+    # line = [result[8] for result in results]
+    # vehicle = [result[9] for result in results]
+    # code_info = [result[10] for result in results]
+    # latitude = [result[11] for result in results]
+    # longitude = [result[12] for result in results]
+    # line_name = [result[13] for result in results]
+    # month = [result[14] for result in results]
+    # time_range = [result[15] for result in results]
 
-    ttc_subway_2019_data = [{
-        "date": date,
-        "time": time,
-        "station": station,
-        "day": day,
-        "code": code,
-        "min_delay": min_delay,
-        "min_gap": min_gap,
-        "bound": bound,
-        "line": line,
-        "vehicle": vehicle,
-        "code_info": code_info,
-        "latitude": latitude,
-        "longitude": longitude,
-        "line_name": line_name,
-        "month": month,
-        "time_range": time_range
-    }] 
+    ttc_subway_2019_data = [];
+
+    for result in results:
+        ttc_subway_2019_data.append(
+            {"date": result[0],
+            "time": result[1],
+            "station": result[2],
+            "day": result[3],
+            "code": result[4],
+            "min_delay": result[5],
+            "min_gap": result[6],
+            "bound": result[7],
+            "line": result[8],
+            "vehicle": result[9],
+            "code_info": result[10],
+            "latitude": result[11],
+            "longitude": result[12],
+            "line_name": result[13],
+            "month": result[14],
+            "time_range": result[15]}
+        )
 
     return jsonify(ttc_subway_2019_data)
 
