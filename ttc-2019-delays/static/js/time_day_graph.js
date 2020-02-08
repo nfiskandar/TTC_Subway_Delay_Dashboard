@@ -1,6 +1,12 @@
 // Define url
 var url = "/delay";
 
+d3.json(url).then(function(data){
+	console.log(data);	
+	});
+
+
+
 // Define function to calculate average
 function average(arr){
     //Find the sum

@@ -16,7 +16,29 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "p
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 db = SQLAlchemy(app)
 
-from .models import ttc_subway_2019
+class ttc_subway_2019(db.Model):
+    __tablename__ = 'ttc_subway_2019'
+
+    id = db.Column(db.String(64), primary_key=True)
+    date = db.Column(db.String(64))
+    time = db.Column(db.String(64))
+    day = db.Column(db.String(64))
+    station = db.Column(db.String(64))
+    code = db.Column(db.String(64))
+    min_delay = db.Column(db.String(64))
+    min_gap = db.Column(db.String(64))
+    bound = db.Column(db.String(64))
+    line = db.Column(db.String(64))
+    vehicle = db.Column(db.String(64))
+    code_info = db.Column(db.String(64))
+    latitude = db.Column(db.String(64))
+    longitude = db.Column(db.String(64))
+    line_name = db.Column(db.String(64))
+    month = db.Column(db.String(64))
+    time_range = db.Column(db.String(64))
+    
+    def __repr__(self):
+        return '<ttc_subway_2019 %r>' % (self.name)
 
 # create route that renders index.html template
 @app.route("/")
