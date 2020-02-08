@@ -14,9 +14,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "postgres://omtjgoefxknxjr:4dc783a299806ee57d98e35b67ccfbfc26f71b0f7ef0806de7a83021d71b69a8@ec2-184-72-236-57.compute-1.amazonaws.com:5432/d397mvjlukaah3"
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-ttc_subway_2019 = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
-results = ttc_subway_2019.session.query(
+from .models import ttc_subway_2019
+    
+results = db.session.query(
     # database.column_name
     ttc_subway_2019.date, 
     ttc_subway_2019.time, 
@@ -83,22 +85,22 @@ def delay():
 
     return jsonify(ttc_subway_2019_data)
 
-# create route to query database and send jsonified results for map data
-@app.route("/map")
-def map():
-    station = [result[3] for result in results]
-    latitude = [result[11] for result in results]
-    longitude = [result[12] for result in results]
-    line_name = [result[13] for result in results]
+# # create route to query database and send jsonified results for map data
+# @app.route("/map")
+# def map():
+#     station = [result[3] for result in results]
+#     latitude = [result[11] for result in results]
+#     longitude = [result[12] for result in results]
+#     line_name = [result[13] for result in results]
 
-    ttc_station_coordinates = [{
-        "station" : station,
-        "latitude": latitude,
-        "longitude": longitude,
-        "line_name": line_name
-    }]
+#     ttc_station_coordinates = [{
+#         "station" : station,
+#         "latitude": latitude,
+#         "longitude": longitude,
+#         "line_name": line_name
+#     }]
 
-    return jsonify(ttc_station_coordinates) 
+#     return jsonify(ttc_station_coordinates) 
 
 if __name__ == "__main__":
     app.run()
