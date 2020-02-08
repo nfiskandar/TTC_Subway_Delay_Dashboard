@@ -47,6 +47,8 @@ class station_in_line(db.Model):
     latitude = db.Column(db.String(64))
     longitude = db.Column(db.String(64))
     line_name = db.Column(db.String(64))
+    num_delays = db.Column(db.String(64))
+    avg_delay_time = db.Column(db.String(64))
     
     def __repr__(self):
         return '<station_in_line %r>' % (self.name)
@@ -114,6 +116,8 @@ def map():
         station_in_line.latitude,
         station_in_line.longitude,
         station_in_line.line_name,
+        station_in_line.num_delays,
+        station_in_line.avg_delay_time
         ).all()
 
     station_in_line_data = []
@@ -123,7 +127,10 @@ def map():
             {"station": result[0],
             "latitude": result[1],
             "longitude": result[2],
-            "line_name": result[3]}
+            "line_name": result[3],
+            "num_delays": result[4],
+            "avg_delay_time": result[5]
+            }
         )
 
     return jsonify(station_in_line_data)
