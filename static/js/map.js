@@ -1,5 +1,5 @@
 var mymap = L.map("map", {
-    center: [45.52, -122.67],
+    center: [43.6711, -79.3858],
     zoom: 13
   });
   
@@ -19,11 +19,11 @@ d3.csv (path, function(data){
   });
 
   //circle on the stop
-  var circle = L.circle([45.52, -122.67], {
+  var circle = L.circle([43.6711, -79.3858], {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.5,
-    radius: 1000
+    radius: 50
 }).addTo(mymap);
 
 // polygon to connect stops
