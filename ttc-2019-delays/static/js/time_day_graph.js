@@ -17,13 +17,14 @@ function average(arr){
     //Get the length of the array
     var numbersCnt = arr.length;
     //Return the average / mean.
+	
     return (sum / numbersCnt);
 };
 
 // Save dropdown menu text in variable
-var subway_lines = ['1: Yonge-University Line','2: Bloor-Danforth Line','3: Scarborough Line','4: Sheppard Line'];
+var subway_lines = ['Yonge University Spadina','Bloor Danforth','Scarborough Rail Transit','Sheppard'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-var time_groups = ['5-9am','9am-12pm','12-3pm','3-6pm','6-9pm','9pm-1:30am'];
+var time_groups = ['5-9AM','9AM-12PM','12-3PM','3-6PM','6-9PM','9PM-1:30AM'];
 var days = ['Monday','Tuesday','Wednesay','Thursday','Friday','Saturday','Sunday'];
 
 	/* Select dropdown menu and add options to dropdown */
@@ -110,24 +111,27 @@ function init(){
 		
 			/* Calculate total number of delays and average min delay by time and day groups */
 		
+		console.log(init_time_data);
+		
+		
 		// Calculate total number of delays for the time graph
 		var init_time_graph_num_delays = [];
-		init_time_graph_num_delays.push(Object.values(init_time_data_group1[0]).length);
-		init_time_graph_num_delays.push(Object.values(init_time_data_group2[0]).length);
-		init_time_graph_num_delays.push(Object.values(init_time_data_group3[0]).length);
-		init_time_graph_num_delays.push(Object.values(init_time_data_group4[0]).length);
-		init_time_graph_num_delays.push(Object.values(init_time_data_group5[0]).length);
-		init_time_graph_num_delays.push(Object.values(init_time_data_group6[0]).length);
+		init_time_graph_num_delays.push(Object.values(init_time_data_group1[0].length));
+		init_time_graph_num_delays.push(Object.values(init_time_data_group2[0].length));
+		init_time_graph_num_delays.push(Object.values(init_time_data_group3[0].length));
+		init_time_graph_num_delays.push(Object.values(init_time_data_group4[0].length));
+		init_time_graph_num_delays.push(Object.values(init_time_data_group5[0].length));
+		init_time_graph_num_delays.push(Object.values(init_time_data_group6[0].length));
 		
 		// Calculate total number of delays for the day graph
 		var init_day_graph_num_delays = [];		
-		init_day_graph_num_delays.push(Object.values(init_day_data_group1[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group2[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group3[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group4[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group5[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group6[0]).length);
-		init_day_graph_num_delays.push(Object.values(init_day_data_group7[0]).length);
+		init_day_graph_num_delays.push(Object.values(init_day_data_group1[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group2[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group3[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group4[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group5[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group6[0].length));
+		init_day_graph_num_delays.push(Object.values(init_day_data_group7[0].length));
 		
 		// Calculate average min delay for the time graph
 		var init_time_graph_avg_delay = [];	
@@ -309,22 +313,22 @@ function optionChanged(){
 		
 		// Calculate total number of delays for the time graph
 		var current_time_graph_num_delays = [];
-		current_time_graph_num_delays.push(Object.values(current_time_data_group1[0]).length);
-		current_time_graph_num_delays.push(Object.values(current_time_data_group2[0]).length);
-		current_time_graph_num_delays.push(Object.values(current_time_data_group3[0]).length);
-		current_time_graph_num_delays.push(Object.values(current_time_data_group4[0]).length);
-		current_time_graph_num_delays.push(Object.values(current_time_data_group5[0]).length);
-		current_time_graph_num_delays.push(Object.values(current_time_data_group6[0]).length);
+		current_time_graph_num_delays.push(Object.values(current_time_data_group1[0].length));
+		current_time_graph_num_delays.push(Object.values(current_time_data_group2[0].length));
+		current_time_graph_num_delays.push(Object.values(current_time_data_group3[0].length));
+		current_time_graph_num_delays.push(Object.values(current_time_data_group4[0].length));
+		current_time_graph_num_delays.push(Object.values(current_time_data_group5[0].length));
+		current_time_graph_num_delays.push(Object.values(current_time_data_group6[0].length));
 		
 		// Calculate total number of delays for the day graph
 		var current_day_graph_num_delays = [];		
-		current_day_graph_num_delays.push(Object.values(current_day_data_group1[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group2[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group3[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group4[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group5[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group6[0]).length);
-		current_day_graph_num_delays.push(Object.values(current_day_data_group7[0]).length);
+		current_day_graph_num_delays.push(Object.values(current_day_data_group1[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group2[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group3[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group4[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group5[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group6[0].length));
+		current_day_graph_num_delays.push(Object.values(current_day_data_group7[0].length));
 		
 		// Calculate average min delay for the time graph
 		var current_time_graph_avg_delay = [];	

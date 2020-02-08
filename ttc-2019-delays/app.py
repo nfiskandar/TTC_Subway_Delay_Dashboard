@@ -88,8 +88,8 @@ def delay():
         ttc_subway_2019_data.append(
             {"date": result[0],
             "time": result[1],
-            "station": result[2],
-            "day": result[3],
+            "day": result[2],
+            "station": result[3],
             "code": result[4],
             "min_delay": result[5],
             "min_gap": result[6],
