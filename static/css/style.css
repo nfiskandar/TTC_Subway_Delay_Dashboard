@@ -29,3 +29,10 @@ body {
   margin: 0;
   font-size: 16px;
 }
+ 
+.leaflet {
+  width: 150%;
+  height: 400px;
+  position: relative;
+
+}
