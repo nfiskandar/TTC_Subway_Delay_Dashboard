@@ -1,3 +1,6 @@
+var urlDeley = "../data/ttc-subway-delay-2019-masterv2.csv";
+
+var urlMap ="/map";
 var mymap = L.map("map", {
     center: [43.6711, -79.3858],
     zoom: 13
@@ -11,11 +14,14 @@ var mymap = L.map("map", {
     id: "mapbox.streets",
     accessToken: API_KEY
   }).addTo(mymap);
-  
-var path = "../data/station.csv";
 
-d3.csv (path, function(data){
+
+d3.csv (urlDeley, function(data){
   console.log(data);
+  console.log(data.station)
+
+
+
   });
 
   //circle on the stop
