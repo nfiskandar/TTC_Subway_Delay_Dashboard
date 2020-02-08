@@ -1,5 +1,5 @@
 // Define url
-var url = "/";
+var url = "/delay";
 
 // Define function to calculate average
 function average(arr){
