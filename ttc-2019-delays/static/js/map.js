@@ -1,6 +1,5 @@
-var urlDeley = "../data/ttc-subway-delay-2019-masterv2.csv";
 
-var urlMap ="/map";
+
 var mymap = L.map("map", {
     center: [43.6711, -79.3858],
     zoom: 13
@@ -16,9 +15,67 @@ var mymap = L.map("map", {
   }).addTo(mymap);
 
 
+var urlDeley = "/delay";
+
+var urlMap ="/map";
+var Kennedy=[];
+var Warden=[];
+var VictoriaPark=[];
+var MainStreet=[];
+var Woodbine=[];
+var Coxwell=[];
+var Greenwood=[];
+var Donlands=[];
+var Pape=[];
+var Chester=[];
+var Broadview=[];
+var CastleFrank=[];
+var Sherboune=[];
+var BloorYonge=[];
+var Bay=[];
+var StGeorge=[];
+var Spadina=[];
+var Bathurst=[];
+var Christie=[];
+var Ossington=[];
+var Dufferin=[];
+var Lansdowne=[];
+var DundasWest=[];
+var Keele=[];
+var HighPark=[];
+var Runnymed=[];
+var Jane=[];
+var OldMill=[];
+var RoyalYork=[];
+var Islington=[];
+var Kipling=[];
+
+var LawrenceEast=[];
+var Ellesmere=[];
+var Midland=[];
+var Scarborough=[];
+var McCowan=[];
+
 d3.csv (urlDeley, function(data){
   console.log(data);
-  console.log(data.station)
+  // console.log(data.station)
+  // for (i =0; i<data.length; i++){
+  //   if (data[i].station = "Kennedy"){
+  //     Kennedy.push(data[i].min_delay)
+  //   }
+  //   else if (data[i]="Warden"){
+  //     Warden.push(data[i].min_delay)
+  //   }
+  //   else if (data[i]="Warden"){
+  //     VictoriaPark.push(data[i].min_delay)
+  //   }
+  //   else {
+      
+  //   }
+  
+
+
+
 
 
 
