@@ -72,7 +72,6 @@ function init(){
 		console.log(init_month);
 		console.log(init_time);
 		console.log(init_day);
-		console.log(init_sample_values);
 		
 			/* Filter data based on init filter values */
 		
@@ -151,7 +150,11 @@ function init(){
 		var time_trace1 = {
 		  x: time_groups,
 		  y: init_time_graph_num_delays,
-		  text: `Time: ${time_groups}<br>Number of Delays: ${init_time_graph_num_delays}`,
+		  text: `Subway Line: ${init_time_subway_value}<br>
+					Month: ${init_time_month_value}<br>
+					Day: ${init_time_day_value}<br>
+					Time: ${time_groups}<br>
+					Number of Delays: ${init_time_graph_num_delays}`,
 		  name: 'Number of Delays',
 		  type: 'scatter'
 		};
@@ -160,7 +163,11 @@ function init(){
 		var time_trace2 = {
 		  x: time_groups,
 		  y: init_time_graph_avg_delay,
-		  text: `Time: ${time_groups}<br>Average Delay: ${init_time_graph_num_delays} minutes`,
+		  text: `Subway Line: ${init_time_subway_value}<br>
+					Month: ${init_time_month_value}<br>
+					Day: ${init_time_day_value}<br>
+					Time: ${time_groups}<br>
+					Average Delay: ${init_time_graph_avg_delay} minutes`,
 		  name: 'Number of Delays',
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
@@ -197,7 +204,11 @@ function init(){
 		var day_trace1 = {
 		  x: days,
 		  y: init_day_graph_num_delays,
-		  text: `Day: ${days}<br>Number of Delays: ${init_day_graph_num_delays}`,
+		  text: `Subway Line: ${init_day_subway_value}<br>
+					Month: ${init_day_month_value}<br>
+					Time: ${init_day_time_value}<br>
+					Day: ${day_groups}<br>
+					Number of Delays: ${init_day_graph_num_delays}`,
 		  name: 'Number of Delays',
 		  name: 'Number of Delays',
 		  type: 'scatter'
@@ -207,7 +218,10 @@ function init(){
 		var day_trace2 = {
 		  x: days,
 		  y: init_day_graph_avg_delay,
-		  text: `Day: ${days}<br>Average Delay: ${init_day_graph_avg_delay} minutes`,
+		  text: `Subway Line: ${init_day_subway_value}<br>
+					Month: ${init_day_month_value}<br>
+					Time: ${init_day_time_value}<br>Day: ${day_groups}<br>
+					Average Delay: ${init_day_graph_avg_delay} minutes`,
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
 		  type: 'scatter'
@@ -332,11 +346,19 @@ function optionChanged(){
 			/* Update time bar graph */
 		
 		// Define data
-		var time_update {
+		var time_update = {
 		  y: [current_time_graph_num_delays,
 			  current_time_graph_avg_delay],
-		  text: [`Time: ${time_groups}<br>Number of Delays: ${current_time_graph_num_delays}`,
-				 `Time: ${time_groups}<br>Average Delay: ${current_time_graph_avg_delay} minutes`]
+		  text: [`Subway Line: ${current_time_subway_value}<br>
+					Month: ${current_time_month_value}<br>
+					Day: ${current_time_day_value}<br>
+					Time: ${time_groups}<br>
+					Number of Delays: ${current_time_graph_num_delays}`,
+				 `Subway Line: ${current_time_subway_value}<br>
+					Month: ${current_time_month_value}<br>
+					Day: ${current_time_day_value}<br>
+					Time: ${time_groups}<br>
+					Average Delay: ${current_time_graph_avg_delay} minutes`]
 		};
 		
 		// Retyle graph
@@ -345,11 +367,18 @@ function optionChanged(){
 			/* Update day bar graph */
 		
 		// Define data
-		var day_update {
+		var day_update = {
 		  y: [current_day_graph_num_delays,
 			  current_day_graph_avg_delay],
-		  text: [`Day: ${day_groups}<br>Number of Delays: ${current_day_graph_num_delays}`,
-				 `Day: ${day_groups}<br>Average Delay: ${current_day_graph_avg_delay} minutes`]
+		  text: [`Subway Line: ${current_day_subway_value}<br>
+					Month: ${current_day_month_value}<br>
+					Time: ${current_day_time_value}<br>
+					Day: ${day_groups}<br>
+					Number of Delays: ${current_day_graph_num_delays}`,
+				`Subway Line: ${current_day_subway_value}<br>
+					Month: ${current_day_month_value}<br>
+					Time: ${current_day_time_value}<br>Day: ${day_groups}<br>
+					Average Delay: ${current_day_graph_avg_delay} minutes`]
 		};
 		
 		// Retyle graph
