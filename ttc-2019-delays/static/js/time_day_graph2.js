@@ -27,8 +27,8 @@ function average(arr){
 };
 
 // Save dropdown menu text in variable
-var subway_lines = ['Yonge University Spadina','Bloor Danforth','Scarborough Rail Transit','Sheppard'];
-var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var subway_lines = ['All','Yonge University Spadina','Bloor Danforth','Scarborough Rail Transit','Sheppard'];
+var months = ['All','January','February','March','April','May','June','July','August','September','October','November','December'];
 var time_groups = ['5-9AM','9AM-12PM','12-3PM','3-6PM','6-9PM','9PM-1:30AM'];
 var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
@@ -44,10 +44,10 @@ subway_lines.forEach(subway_line=>time_subway_filter.append("option").text(subwa
 var time_month_filter = d3.select("#time_month_filter");
 months.forEach(month=>time_month_filter.append("option").text(month));
 
-// Select time_day_filter dropdown
-// Add options to dropdown
-var time_day_filter = d3.select("#time_day_filter");
-days.forEach(day=>time_day_filter.append("option").text(day));	
+// // Select time_day_filter dropdown
+// // Add options to dropdown
+// var time_day_filter = d3.select("#time_day_filter");
+// days.forEach(day=>time_day_filter.append("option").text(day));	
 		
 // Select day_subway_filter dropdown
 // Add options to dropdown
@@ -59,10 +59,10 @@ subway_lines.forEach(subway_line=>day_subway_filter.append("option").text(subway
 var day_month_filter = d3.select("#day_month_filter");
 months.forEach(month=>day_month_filter.append("option").text(month));
 
-// Select day_time_filter dropdown
-// Add options to dropdown
-var day_time_filter = d3.select("#day_time_filter");
-time_groups.forEach(time_group=>day_time_filter.append("option").text(time_group));	
+// // Select day_time_filter dropdown
+// // Add options to dropdown
+// var day_time_filter = d3.select("#day_time_filter");
+// time_groups.forEach(time_group=>day_time_filter.append("option").text(time_group));	
 	
 
 // Create function init
@@ -74,26 +74,48 @@ function init(){
 		// Define init dropdown values 
 		var init_subway_value = subway_lines[0];
 		var init_month_value = months[0];
-		var init_time_value = time_groups[0];
-		var init_day_value = days[0];
+		// var init_time_value = time_groups[0];
+		// var init_day_value = days[0];
 		
 		// Print data
 		console.log(init_subway_value);
 		console.log(init_month_value);
-		console.log(init_time_value);
-		console.log(init_day_value);
+		// console.log(init_time_value);
+		// console.log(init_day_value);
 		
 			/* Filter data based on init filter values */
 		
 		// Filter data for the time graph based on init dropdown values
-		var init_time_data_temp1 = data.filter(data=>data.line_name == init_subway_value);
-		var init_time_data_temp2 = init_time_data_temp1.filter(data=>data.month == init_month_value);
-		var init_time_data = init_time_data_temp2.filter(data=>data.day == init_day_value);
+		if (init_subway_value == 'All'){
+			var init_time_data_temp = data;
+		}
+		else {
+			var init_time_data_temp = data.filter(data=>data.line_name == init_subway_value);
+		}
+
+		if (init_month_value == 'All'){
+			var init_time_data = init_time_data_temp;
+		}
+		else {
+			var init_time_data = init_time_data_temp.filter(data=>data.month == init_month_value);
+		}
+		// var init_time_data = init_time_data_temp2.filter(data=>data.day == init_day_value);
 		
 		// Filter data for the day graph based on init dropdown values
-		var init_day_data_temp1 = data.filter(data=>data.line_name == init_subway_value);
-		var init_day_data_temp2 = init_day_data_temp1.filter(data=>data.month == init_month_value);
-		var init_day_data = init_day_data_temp2.filter(data=>data.time_range == init_time_value);
+		if (init_subway_value == 'All'){
+			var init_day_data_temp = data;
+		}
+		else {
+			var init_day_data_temp = data.filter(data=>data.line_name == init_subway_value);
+		}
+
+		if (init_month_value == 'All'){
+			var init_day_data = init_day_data_temp;
+		}
+		else {
+			var init_day_data = init_day_data_temp.filter(data=>data.month == init_month_value);
+		}
+		// var init_day_data = init_day_data_temp2.filter(data=>data.time_range == init_time_value);
 
 			/* Group data by time and date groups */
 
@@ -266,29 +288,53 @@ function optionChanged(){
 		// Save current dropdown values 
 		var current_time_subway_value = d3.select("#time_subway_filter").property("value");
 		var current_time_month_value = d3.select("#time_month_filter").property("value");
-		var current_time_day_value = d3.select("#time_day_filter").property("value");
+		// var current_time_day_value = d3.select("#time_day_filter").property("value");
 		var current_day_subway_value = d3.select("#day_subway_filter").property("value");
 		var current_day_month_value = d3.select("#day_month_filter").property("value");
-		var current_day_time_value = d3.select("#day_time_filter").property("value");
+		// var current_day_time_value = d3.select("#day_time_filter").property("value");
 
 		console.log(current_time_subway_value);
 		console.log(current_time_month_value);
-		console.log(current_time_day_value);
+		// console.log(current_time_day_value);
 		console.log(current_day_subway_value);
 		console.log(current_day_month_value);
-		console.log(current_day_time_value);
+		// console.log(current_day_time_value);
 		
 			/* Filter data based on current filter values */
-		
-		// Filter data for the time graph based on current dropdown values
-		var current_time_data_temp1 = data.filter(data=>data.line_name == current_time_subway_value);
-		var current_time_data_temp2 = current_time_data_temp1.filter(data=>data.month == current_time_month_value);
-		var current_time_data = current_time_data_temp2.filter(data=>data.day == current_time_day_value);
-		
-		// Filter data for the day graph based on current dropdown values
-		var current_day_data_temp1 = data.filter(data=>data.line_name == current_day_subway_value);
-		var current_day_data_temp2 = current_day_data_temp1.filter(data=>data.month == current_day_month_value);
-		var current_day_data = current_day_data_temp2.filter(data=>data.time_range == current_day_time_value);
+        
+        // Filter data for the time graph based on current dropdown values
+        if (current_time_subway_value == 'All'){
+            var current_time_data_temp = data;
+        }
+        else {
+            var current_time_data_temp = data.filter(data=>data.line_name == current_time_subway_value);
+        }
+
+        if (current_time_month_value == 'All'){
+            var current_time_data = current_time_data_temp;
+        }
+        else {
+            var current_time_data = current_time_data_temp.filter(data=>data.month == current_time_month_value);
+        }
+        // var current_time_data = current_time_data_temp2.filter(data=>data.day == current_time_day_value);
+        
+        // Filter data for the day graph based on current dropdown values
+        if (current_day_subway_value == 'All'){
+            var current_day_data_temp = data;
+        }
+        else {
+            var current_day_data_temp = data.filter(data=>data.line_name == current_day_subway_value);
+        }
+
+        if (current_day_month_value == 'All'){
+            var current_day_data = current_day_data_temp;
+        }
+        else {
+            var current_day_data = current_day_data_temp.filter(data=>data.month == current_day_month_value);
+        }
+        // var current_day_data = current_day_data_temp2.filter(data=>data.time_range == current_day_time_value);
+
+
 
 			/* Group data by time and date groups */
 
