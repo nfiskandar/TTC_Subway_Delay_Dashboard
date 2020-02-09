@@ -148,46 +148,26 @@ function init(){
 		init_day_graph_avg_delay.push(average(init_day_data_group5.map(data=>parseFloat(data.min_delay))));
 		init_day_graph_avg_delay.push(average(init_day_data_group6.map(data=>parseFloat(data.min_delay))));
 		init_day_graph_avg_delay.push(average(init_day_data_group7.map(data=>parseFloat(data.min_delay))));
-			
-		data.min_delay = +data.min_delay;
-		
-		console.log(init_time_data_group1.map(data=>parseFloat(data.min_delay)));
-		console.log(average(init_time_data_group1.map(data=>parseFloat(data.min_delay))));
-		console.log(average([4,5,4]));
-		console.log(data.min_delay);
-		console.log(init_time_graph_num_delays);
-		console.log(init_day_graph_num_delays);
-		console.log(init_time_graph_avg_delay);
-		console.log(init_day_graph_avg_delay);	
-			
-			
+						
 			/* Create time bar chart */
 		
 		// Define trace 1
 		var time_trace1 = {
 		  x: time_groups,
 		  y: init_time_graph_num_delays,
-		  text: `Subway Line: ${init_subway_value}<br>
-					Month: ${init_month_value}<br>
-					Day: ${init_day_value}<br>
-					Time: ${time_groups}<br>
-					Number of Delays: ${init_time_graph_num_delays}`,
 		  name: 'Number of Delays',
-		  type: 'scatter'
+		  type: 'scatter',
+		  hoverinfo: 'y'
 		};
 
 		// Define trace 2
 		var time_trace2 = {
 		  x: time_groups,
 		  y: init_time_graph_avg_delay,
-		  text: `Subway Line: ${init_subway_value}<br>
-					Month: ${init_month_value}<br>
-					Day: ${init_day_value}<br>
-					Time: ${time_groups}<br>
-					Average Delay: ${init_time_graph_avg_delay} minutes`,
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
-		  type: 'scatter'
+		  type: 'scatter',
+		  hoverinfo: 'y'
 		};
 
 		// Define data
@@ -198,17 +178,22 @@ function init(){
 		  title: 'Number of Delays and Average Minimum Delay By Time of Day',
 		  xaxis: {title: 'Time of Day'},
 		  yaxis: {
-			  title: 'Total Number of Subway Delays',
-			  titlefont: {color: '#1f77b4'},
-			  tickfont: {color: '#1f77b4'},
+			title: 'Total Number of Subway Delays',
+			titlefont: {color: '#1f77b4'},
+			tickfont: {color: '#1f77b4'},
+			hoverformat: '.2f'
 		  },
 		  yaxis2: {
 			title: 'Average Delay To Subway Service (Minutes)',
 			titlefont: {color: '#ff7f0e'},
 			tickfont: {color: '#ff7f0e'},
+			hoverformat: '.2f',
 			overlaying: 'y',
 			side: 'right'
-		  }
+		  },
+		  legend: {"orientation": "h",
+					x: 0.15,
+					y: 1.1}
 		};
 				
 		// Plot graph
@@ -220,27 +205,19 @@ function init(){
 		var day_trace1 = {
 		  x: days,
 		  y: init_day_graph_num_delays,
-		  text: `Subway Line: ${init_subway_value}<br>
-					Month: ${init_month_value}<br>
-					Time: ${init_time_value}<br>
-					Day: ${days}<br>
-					Number of Delays: ${init_day_graph_num_delays}`,
 		  name: 'Number of Delays',
-		  type: 'scatter'
+		  type: 'scatter',
+		  hoverinfo: 'y'
 		};
 
 		// Define trace 2
 		var day_trace2 = {
 		  x: days,
 		  y: init_day_graph_avg_delay,
-		  text: `Subway Line: ${init_subway_value}<br>
-					Month: ${init_month_value}<br>
-					Time: ${init_time_value}<br>
-					Day: ${days}<br>
-					Average Delay: ${init_day_graph_avg_delay} minutes`,
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
-		  type: 'scatter'
+		  type: 'scatter',
+		  hoverinfo: 'y'
 		};
 
 		// Define data
@@ -248,20 +225,25 @@ function init(){
 			
 		// Define layout
 		var day_layout = {
-		  title: 'Number of Delays and Average Minimum Delay By Day f Week',
+		  title: 'Number of Delays and Average Minimum Delay By Day of Week',
 		  xaxis: {title: 'Day of Week'},
 		  yaxis: {
-			  title: 'Total Number of Subway Delays',
-			  titlefont: {color: '#1f77b4'},
-			  tickfont: {color: '#1f77b4'},
+			title: 'Total Number of Subway Delays',
+			titlefont: {color: '#1f77b4'},
+			tickfont: {color: '#1f77b4'},
+			hoverformat: '.2f'
 		  },
 		  yaxis2: {
 			title: 'Average Delay To Subway Service (Minutes)',
 			titlefont: {color: '#ff7f0e'},
 			tickfont: {color: '#ff7f0e'},
+			hoverformat: '.2f',
 			overlaying: 'y',
 			side: 'right'
-		  }
+		  },
+		  legend: {"orientation": "h",
+					x: 0.15,
+					y: 1.1}
 		};
 				
 		// Plot graph
@@ -287,18 +269,25 @@ function optionChanged(){
 		var current_day_subway_value = d3.select("#day_subway_filter").property("value");
 		var current_day_month_value = d3.select("#day_month_filter").property("value");
 		var current_day_time_value = d3.select("#day_time_filter").property("value");
+
+		console.log(current_time_subway_value);
+		console.log(current_time_month_value);
+		console.log(current_time_day_value);
+		console.log(current_day_subway_value);
+		console.log(current_day_month_value);
+		console.log(current_day_time_value);
 		
-					/* Filter data based on current filter values */
+			/* Filter data based on current filter values */
 		
 		// Filter data for the time graph based on current dropdown values
-		var current_time_data_temp1 = data.filter(data=>data.line_name == current_subway_value);
-		var current_time_data_temp2 = current_time_data_temp1.filter(data=>data.month == current_month_value);
-		var current_time_data = current_time_data_temp2.filter(data=>data.day == current_day_value);
+		var current_time_data_temp1 = data.filter(data=>data.line_name == current_time_subway_value);
+		var current_time_data_temp2 = current_time_data_temp1.filter(data=>data.month == current_time_month_value);
+		var current_time_data = current_time_data_temp2.filter(data=>data.day == current_time_day_value);
 		
 		// Filter data for the day graph based on current dropdown values
-		var current_day_data_temp1 = data.filter(data=>data.line_name == current_subway_value);
-		var current_day_data_temp2 = current_day_data_temp1.filter(data=>data.month == current_month_value);
-		var current_day_data = current_day_data_temp2.filter(data=>data.time_range == current_time_value);
+		var current_day_data_temp1 = data.filter(data=>data.line_name == current_day_subway_value);
+		var current_day_data_temp2 = current_day_data_temp1.filter(data=>data.month == current_day_month_value);
+		var current_day_data = current_day_data_temp2.filter(data=>data.time_range == current_day_time_value);
 
 			/* Group data by time and date groups */
 
