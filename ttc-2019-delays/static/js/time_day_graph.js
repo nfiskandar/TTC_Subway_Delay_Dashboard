@@ -18,7 +18,12 @@ function average(arr){
     var numbersCnt = arr.length;
     //Return the average / mean.
 	
-    return (sum / numbersCnt);
+	if (numbersCnt != 0) {
+		return (sum / numbersCnt);
+	}
+	else {
+		return 0;
+	}
 };
 
 // Save dropdown menu text in variable
