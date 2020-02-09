@@ -25,7 +25,7 @@ function average(arr){
 var subway_lines = ['Yonge University Spadina','Bloor Danforth','Scarborough Rail Transit','Sheppard'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var time_groups = ['5-9AM','9AM-12PM','12-3PM','3-6PM','6-9PM','9PM-1:30AM'];
-var days = ['Monday','Tuesday','Wednesay','Thursday','Friday','Saturday','Sunday'];
+var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
 	/* Select dropdown menu and add options to dropdown */
 
@@ -191,9 +191,7 @@ function init(){
 			overlaying: 'y',
 			side: 'right'
 		  },
-		  legend: {"orientation": "h",
-					x: 0.15,
-					y: 1.1}
+		  legend: {"orientation":"h",xanchor:'center',y:1.1,x:0.5}
 		};
 				
 		// Plot graph
@@ -241,9 +239,7 @@ function init(){
 			overlaying: 'y',
 			side: 'right'
 		  },
-		  legend: {"orientation": "h",
-					x: 0.15,
-					y: 1.1}
+		  legend: {"orientation":"h",yanchor:'top',xanchor:'center',y:1.1,x:0.5}
 		};
 				
 		// Plot graph
