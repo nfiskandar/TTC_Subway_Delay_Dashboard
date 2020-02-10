@@ -15,71 +15,24 @@ var mymap = L.map("map", {
   }).addTo(mymap);
 
 
-var urlDeley = "/delay";
-
 var urlMap ="/map";
-var Kennedy=[];
-var Warden=[];
-var VictoriaPark=[];
-var MainStreet=[];
-var Woodbine=[];
-var Coxwell=[];
-var Greenwood=[];
-var Donlands=[];
-var Pape=[];
-var Chester=[];
-var Broadview=[];
-var CastleFrank=[];
-var Sherboune=[];
-var BloorYonge=[];
-var Bay=[];
-var StGeorge=[];
-var Spadina=[];
-var Bathurst=[];
-var Christie=[];
-var Ossington=[];
-var Dufferin=[];
-var Lansdowne=[];
-var DundasWest=[];
-var Keele=[];
-var HighPark=[];
-var Runnymed=[];
-var Jane=[];
-var OldMill=[];
-var RoyalYork=[];
-var Islington=[];
-var Kipling=[];
+var Map ="../data/station_in_line.csv";
+d3.csv(Map).then(function(data){
+  console.log(data);	
 
-var LawrenceEast=[];
-var Ellesmere=[];
-var Midland=[];
-var Scarborough=[];
-var McCowan=[];
+  
 
-d3.csv (urlDeley, function(data){
-  console.log(data);
-  // console.log(data.station)
-  // for (i =0; i<data.length; i++){
-  //   if (data[i].station = "Kennedy"){
-  //     Kennedy.push(data[i].min_delay)
-  //   }
-  //   else if (data[i]="Warden"){
-  //     Warden.push(data[i].min_delay)
-  //   }
-  //   else if (data[i]="Warden"){
-  //     VictoriaPark.push(data[i].min_delay)
-  //   }
-  //   else {
-      
-  //   }
+
+
+	});
+
+
   
 
 
 
 
 
-
-  });
 
   //circle on the stop
   var circle = L.circle([43.6711, -79.3858], {
