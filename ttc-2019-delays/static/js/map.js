@@ -19,29 +19,6 @@ var urlMap ="/map";
 var Map ="../data/station_in_line.csv";
 d3.csv(Map).then(function(data){
   console.log(data);	
-  
-// data.forEach( function(row){
-//    try{var coordinates = [parseFloat(row.latitude), parseFloat(row.longitude)];}
-//    catch(err){console.log(error
-//    )}
-//    finally{
-//     console.log(coordinates);
-//     console.log(row.station);
- 
-//    //circle on the stop
-//   var circle = L.circle( coordinates, {
-//     color: 'red',
-//     fillColor: '#f03',
-//     fillOpacity: 0.5,
-//     radius: 50
-//   }).addTo(mymap);
-//   //popup
-//   circle.bindPopup("<h3>" + row.station +
-//   "</h3><hr><p>" + row.num_delays + 
-//   "</p><hr><p> MAG:" + row.avg_delay_time + "</p>"); 
-// }   
-
-// });
 
 
 // //line1
@@ -139,7 +116,7 @@ for (var k =77; k<82;  k++){
   "</p><hr><p> Avg Delay time:" + data[k].avg_delay_time + "</p>"); 
   // polyline to connect stops  
   var latlng4 =[ [parseFloat(data[k].latitude), parseFloat(data[k].longitude)]];
-  line3coordinates.push(latlng4)  
+  line4coordinates.push(latlng4)  
   console.log(data[k].station);
 };
 console.log(line4coordinates);

@@ -31,8 +31,8 @@ body {
 }
  
 .leaflet {
-  width: 150%;
-  height: 400px;
+  width: 110%;
+  height: 600px;
   position: relative;
 
 }
