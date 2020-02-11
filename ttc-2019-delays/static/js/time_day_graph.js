@@ -1,9 +1,10 @@
 // Define url
 var url = "/delay";
 
-d3.json(url).then(function(data){
-	console.log(data);	
-	});
+// Print data
+// d3.json(url).then(function(data){
+// 	console.log(data);	
+// 	});
 
 // Define function to calculate average
 function average(arr){
@@ -63,8 +64,8 @@ function init(){
 		var init_month_value = months[0];
 		
 		// Print data
-		console.log(init_subway_value);
-		console.log(init_month_value);
+		// console.log(init_subway_value);
+		// console.log(init_month_value);
 		
 			/* Filter data based on init filter values */
 		
@@ -272,10 +273,11 @@ function optionChanged(){
 		var current_day_subway_value = d3.select("#day_subway_filter").property("value");
 		var current_day_month_value = d3.select("#day_month_filter").property("value");
 		
-		console.log(current_time_subway_value);
-		console.log(current_time_month_value);
-		console.log(current_day_subway_value);
-		console.log(current_day_month_value);
+		// Print data
+		// console.log(current_time_subway_value);
+		// console.log(current_time_month_value);
+		// console.log(current_day_subway_value);
+		// console.log(current_day_month_value);
 		
 			/* Filter data based on current filter values */
         
