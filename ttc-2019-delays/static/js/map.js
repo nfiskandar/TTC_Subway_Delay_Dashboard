@@ -16,17 +16,17 @@ var mymap = L.map("map", {
 
 
 var urlMap ="/map";
-var Map ="../data/station_in_line.csv";
+
 d3.json(urlMap).then(function(data){
   console.log(data);	
 
 
 //line1
 var line1coordinates=[];
-for (var  a=0; a<40;  a++){
+for (var  a=0; a<38;  a++){
   var circle1 = L.circle( [parseFloat(data[a].latitude), parseFloat(data[a].longitude)], {
-        color: 'red',
-        fillColor: 'yellow',
+        color: 'yellow',
+        fillColor: 'red',
         fillOpacity: 0.7,
         radius: 50
       }).addTo(mymap);
@@ -35,7 +35,7 @@ for (var  a=0; a<40;  a++){
   "</h3><hr><p>Total Delay time:" + data[a].num_delays + 
   "</p><hr><p> Avg Delay time:" + data[a].avg_delay_time + "</p>"); 
   // polyline to connect stops  
-  var latlng1 =[ [parseFloat(data[a].latitude), parseFloat(data[a].longitude)]];
+  var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
   line1coordinates.push(latlng1)  
   console.log(data[a].station);
 };
@@ -51,10 +51,10 @@ var polyline1 = L.polyline(line1coordinates, {
 
 //line 2
 var line2coordinates =[];
-for (var i=40; i <70; i++) {
+for (var i=38; i <69; i++) {
   var circle2 = L.circle( [parseFloat(data[i].latitude), parseFloat(data[i].longitude)], {
-        color: 'red',
-        fillColor: 'green',
+        color: 'green',
+        fillColor: 'red',
         fillOpacity: 0.5,
         radius: 50
       }).addTo(mymap);
@@ -63,7 +63,7 @@ for (var i=40; i <70; i++) {
   "</h3><hr><p>Total Delay time:" + data[i].num_delays + 
   "</p><hr><p> Avg Delay time:" + data[i].avg_delay_time + "</p>"); 
   // polyline to connect stops  
-  var latlng2 =[ [parseFloat(data[i].latitude), parseFloat(data[i].longitude)]];
+  var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
   line2coordinates.push(latlng2)  
   console.log(data[i].station);
 };
@@ -77,10 +77,10 @@ var polyline2 = L.polyline(line2coordinates, {
 
 //line3
 var line3coordinates=[];
-for (var j =70; j <77; j ++){
+for (var j =70; j <76; j ++){
   var circle3 = L.circle( [parseFloat(data[j].latitude), parseFloat(data[j].longitude)], {
-        color: 'red',
-        fillColor: 'blue',
+        color: 'blue',
+        fillColor: 'red',
         fillOpacity: 0.7,
         radius: 50
       }).addTo(mymap);
@@ -89,7 +89,7 @@ for (var j =70; j <77; j ++){
   "</h3><hr><p>Total Delay time:" + data[j].num_delays + 
   "</p><hr><p> Avg Delay time:" + data[j].avg_delay_time + "</p>"); 
   // polyline to connect stops  
-  var latlng3 =[ [parseFloat(data[j].latitude), parseFloat(data[j].longitude)]];
+  var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
   line3coordinates.push(latlng3)  
   console.log(data[j].station);
 };
@@ -105,8 +105,8 @@ var polyline3 = L.polyline(line3coordinates, {
 var line4coordinates=[];
 for (var k =75; k<80;  k++){
   var circle4 = L.circle( [parseFloat(data[k].latitude), parseFloat(data[k].longitude)], {
-        color: 'red',
-        fillColor: 'purple',
+        color: 'purple',
+        fillColor: 'red',
         fillOpacity: 0.7,
         radius: 50
       }).addTo(mymap);
@@ -115,7 +115,7 @@ for (var k =75; k<80;  k++){
   "</h3><hr><p>Total Delay time:" + data[k].num_delays + 
   "</p><hr><p> Avg Delay time:" + data[k].avg_delay_time + "</p>"); 
   // polyline to connect stops  
-  var latlng4 =[ [parseFloat(data[k].latitude), parseFloat(data[k].longitude)]];
+  var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
   line4coordinates.push(latlng4)  
   console.log(data[k].station);
 };
