@@ -31,8 +31,8 @@ var circle1 = L.circle( [parseFloat(data[a].latitude), parseFloat(data[a].longit
     }).addTo(mymap);
 //popup
 circle1.bindPopup("<h3>" + data[a].station +
-"</h3><hr><p>Total Delay Time: " + data[a].num_delays + 
-" minutes </p><hr><p> Avg Delay Time: " + data[a].avg_delay_time + " minutes </p>"); 
+"</h3><hr><p>Number of Delay : " + data[a].num_delays + 
+" </p><hr><p> Avg Delay Time: " + data[a].avg_delay_time + " minutes </p>"); 
 // polyline to connect stops  
 var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
 line1coordinates.push(latlng1)  
@@ -59,7 +59,7 @@ var circle2 = L.circle( [parseFloat(data[i].latitude), parseFloat(data[i].longit
     }).addTo(mymap);
 //popup
 circle2.bindPopup("<h3>" + data[i].station +
-"</h3><hr><p>Total Delay Time :" + data[i].num_delays + 
+"</h3><hr><p>TNumber of Delay :" + data[i].num_delays + 
 " minutes</p><hr><p> Avg Delay Time: " + data[i].avg_delay_time + " minutes</p>"); 
 // polyline to connect stops  
 var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
@@ -85,7 +85,7 @@ var circle3 = L.circle( [parseFloat(data[j].latitude), parseFloat(data[j].longit
     }).addTo(mymap);
 //popup
 circle3.bindPopup("<h3>" + data[j].station +
-"</h3><hr><p>Total Delay Time: " + data[j].num_delays + 
+"</h3><hr><p>Number of Delay " + data[j].num_delays + 
 " minutes</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>"); 
 // polyline to connect stops  
 var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
@@ -111,7 +111,7 @@ var circle4 = L.circle( [parseFloat(data[k].latitude), parseFloat(data[k].longit
     }).addTo(mymap);
 //popup
 circle4.bindPopup("<h3>" + data[k].station +
-"</h3><hr><p>Total Delay Time: " + data[k].num_delays + 
+"</h3><hr><p>Number of Delay " + data[k].num_delays + 
 " minutes</p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>"); 
 // polyline to connect stops  
 var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
