@@ -103,7 +103,7 @@ var polyline3 = L.polyline(line3coordinates, {
 
 //line4
 var line4coordinates=[];
-for (var k =77; k<82;  k++){
+for (var k =75; k<80;  k++){
   var circle4 = L.circle( [parseFloat(data[k].latitude), parseFloat(data[k].longitude)], {
         color: 'red',
         fillColor: 'purple',
