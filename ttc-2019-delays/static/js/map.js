@@ -21,32 +21,32 @@ d3.json(urlMap).then(function(data){
   console.log(data);	
 
 
-// //line1
-// var line1coordinates=[];
-// for (var  a=0; a<40;  a++){
-//   var circle1 = L.circle( [parseFloat(data[a].latitude), parseFloat(data[a].longitude)], {
-//         color: 'red',
-//         fillColor: 'yellow',
-//         fillOpacity: 0.7,
-//         radius: 50
-//       }).addTo(mymap);
-//   //popup
-//   circle1.bindPopup("<h3>" + data[a].station +
-//   "</h3><hr><p>Total Delay time:" + data[a].num_delays + 
-//   "</p><hr><p> Avg Delay time:" + data[a].avg_delay_time + "</p>"); 
-//   // polyline to connect stops  
-//   var latlng1 =[ [parseFloat(data[a].latitude), parseFloat(data[a].longitude)]];
-//   line1coordinates.push(latlng1)  
-//   console.log(data[a].station);
-// };
-// console.log(line1coordinates);
+//line1
+var line1coordinates=[];
+for (var  a=0; a<40;  a++){
+  var circle1 = L.circle( [parseFloat(data[a].latitude), parseFloat(data[a].longitude)], {
+        color: 'red',
+        fillColor: 'yellow',
+        fillOpacity: 0.7,
+        radius: 50
+      }).addTo(mymap);
+  //popup
+  circle1.bindPopup("<h3>" + data[a].station +
+  "</h3><hr><p>Total Delay time:" + data[a].num_delays + 
+  "</p><hr><p> Avg Delay time:" + data[a].avg_delay_time + "</p>"); 
+  // polyline to connect stops  
+  var latlng1 =[ [parseFloat(data[a].latitude), parseFloat(data[a].longitude)]];
+  line1coordinates.push(latlng1)  
+  console.log(data[a].station);
+};
+console.log(line1coordinates);
 
-// //line connecting between station
-// var polyline1 = L.polyline(line1coordinates, {
-//   color: "yellow",
-//   weight: 55,
-//   stroke: true
-// }).addTo(mymap);
+//line connecting between station
+var polyline1 = L.polyline(line1coordinates, {
+  color: "yellow",
+  weight: 55,
+  stroke: true
+}).addTo(mymap);
 
 
 //line 2
