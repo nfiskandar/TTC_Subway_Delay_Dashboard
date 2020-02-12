@@ -16,6 +16,7 @@ var mymap = L.map("map", {
 
 
 var urlMap ="/map";
+// var urlMap ="../data/station_in_line.csv";
 
 d3.json(urlMap).then(function(data){
   console.log(data);	
@@ -28,12 +29,12 @@ for (var  a=0; a<38;  a++){
         color: 'yellow',
         fillColor: 'red',
         fillOpacity: 0.7,
-        radius: 50
+        radius: 60
       }).addTo(mymap);
   //popup
   circle1.bindPopup("<h3>" + data[a].station +
-  "</h3><hr><p>Total Delay time:" + data[a].num_delays + 
-  "</p><hr><p> Avg Delay time:" + data[a].avg_delay_time + "</p>"); 
+  "</h3><hr><p>Total Delay Time: " + data[a].num_delays + 
+  " minutes </p><hr><p> Avg Delay Time: " + data[a].avg_delay_time + " minutes </p>"); 
   // polyline to connect stops  
   var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
   line1coordinates.push(latlng1)  
@@ -44,7 +45,7 @@ for (var  a=0; a<38;  a++){
 //line connecting between station
 var polyline1 = L.polyline(line1coordinates, {
   color: "yellow",
-  weight: 15,
+  weight: 2,
   stroke: true
 }).addTo(mymap);
 
@@ -56,12 +57,12 @@ for (var i=38; i <69; i++) {
         color: 'green',
         fillColor: 'red',
         fillOpacity: 0.5,
-        radius: 50
+        radius: 60
       }).addTo(mymap);
   //popup
   circle2.bindPopup("<h3>" + data[i].station +
-  "</h3><hr><p>Total Delay time:" + data[i].num_delays + 
-  "</p><hr><p> Avg Delay time:" + data[i].avg_delay_time + "</p>"); 
+  "</h3><hr><p>Total Delay Time :" + data[i].num_delays + 
+  " minutes</p><hr><p> Avg Delay Time: " + data[i].avg_delay_time + " minutes</p>"); 
   // polyline to connect stops  
   var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
   line2coordinates.push(latlng2)  
@@ -70,24 +71,24 @@ for (var i=38; i <69; i++) {
 console.log(line2coordinates);
 var polyline2 = L.polyline(line2coordinates, {
   color: "green",
-  weight: 15,
+  weight: 2,
   stroke: true
 }).addTo(mymap);
 
 
 //line3
 var line3coordinates=[];
-for (var j =70; j <76; j ++){
+for (var j =69; j <75; j ++){
   var circle3 = L.circle( [parseFloat(data[j].latitude), parseFloat(data[j].longitude)], {
         color: 'blue',
         fillColor: 'red',
         fillOpacity: 0.7,
-        radius: 50
+        radius: 60
       }).addTo(mymap);
   //popup
   circle3.bindPopup("<h3>" + data[j].station +
-  "</h3><hr><p>Total Delay time:" + data[j].num_delays + 
-  "</p><hr><p> Avg Delay time:" + data[j].avg_delay_time + "</p>"); 
+  "</h3><hr><p>Total Delay Time: " + data[j].num_delays + 
+  " minutes</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>"); 
   // polyline to connect stops  
   var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
   line3coordinates.push(latlng3)  
@@ -97,7 +98,7 @@ for (var j =70; j <76; j ++){
 
 var polyline3 = L.polyline(line3coordinates, {
   color: "blue",
-  weight: 15,
+  weight: 2,
   stroke: true
 }).addTo(mymap);
 
@@ -108,12 +109,12 @@ for (var k =75; k<80;  k++){
         color: 'purple',
         fillColor: 'red',
         fillOpacity: 0.7,
-        radius: 50
+        radius: 60
       }).addTo(mymap);
   //popup
   circle4.bindPopup("<h3>" + data[k].station +
-  "</h3><hr><p>Total Delay time:" + data[k].num_delays + 
-  "</p><hr><p> Avg Delay time:" + data[k].avg_delay_time + "</p>"); 
+  "</h3><hr><p>Total Delay Time: " + data[k].num_delays + 
+  " minutes</p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>"); 
   // polyline to connect stops  
   var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
   line4coordinates.push(latlng4)  
@@ -123,9 +124,24 @@ for (var k =75; k<80;  k++){
 
 var polyline4 = L.polyline(line4coordinates, {
   color: "purple",
-  weight: 15,
+  weight: 2,
   stroke: true
 }).addTo(mymap);
+
+// for (var x=0; x<data.length; x++) {
+// var circle = L.circle( [parseFloat(data[x].latitude), parseFloat(data[x].longitude)], {
+//   color: 'red',
+//   fillColor: 'red',
+//   fillOpacity: 0.7,
+//   radius: 60
+// }).addTo(mymap);
+// //popup
+// circle.bindPopup("<h3>" + data[x].station +
+// "</h3><hr><p>Total Delay Time: " + data[x].num_delays + 
+// " minutes</p><hr><p> Avg Delay Time: " + data[x].avg_delay_time + " minutes</p>"); 
+// }
+
+
 
 });
 
