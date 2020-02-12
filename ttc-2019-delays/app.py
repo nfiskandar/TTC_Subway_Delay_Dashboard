@@ -1,7 +1,9 @@
 # import necessary libraries
 import os
 from flask import (Flask, render_template, jsonify, request, redirect)
-
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, inspect
 #################################################
 # Flask Setup
 #################################################
@@ -12,46 +14,11 @@ app = Flask(__name__)
 #################################################
 from flask_sqlalchemy import SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "postgres://omtjgoefxknxjr:4dc783a299806ee57d98e35b67ccfbfc26f71b0f7ef0806de7a83021d71b69a8@ec2-184-72-236-57.compute-1.amazonaws.com:5432/d397mvjlukaah3"
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-db = SQLAlchemy(app)
-
-class ttc_subway_2019(db.Model):
-    __tablename__ = 'ttc_subway_2019'
-
-    id = db.Column(db.String(64), primary_key=True)
-    date = db.Column(db.String(64))
-    time = db.Column(db.String(64))
-    day = db.Column(db.String(64))
-    station = db.Column(db.String(64))
-    code = db.Column(db.String(64))
-    min_delay = db.Column(db.String(64))
-    min_gap = db.Column(db.String(64))
-    bound = db.Column(db.String(64))
-    line = db.Column(db.String(64))
-    vehicle = db.Column(db.String(64))
-    code_info = db.Column(db.String(64))
-    latitude = db.Column(db.String(64))
-    longitude = db.Column(db.String(64))
-    line_name = db.Column(db.String(64))
-    month = db.Column(db.String(64))
-    time_range = db.Column(db.String(64))
-    
-    def __repr__(self):
-        return '<ttc_subway_2019 %r>' % (self.name)
-
-class station_in_line(db.Model):
-    __tablename__ = 'station_in_line'
-
-    station = db.Column(db.String(64), primary_key=True)
-    latitude = db.Column(db.String(64))
-    longitude = db.Column(db.String(64))
-    line_name = db.Column(db.String(64))
-    num_delays = db.Column(db.String(64))
-    avg_delay_time = db.Column(db.String(64))
-    
-    def __repr__(self):
-        return '<station_in_line %r>' % (self.name)
+engine_heroku = create_engine('postgres://omtjgoefxknxjr:4dc783a299806ee57d98e35b67ccfbfc26f71b0f7ef0806de7a83021d71b69a8@ec2-184-72-236-57.compute-1.amazonaws.com:5432/d397mvjlukaah3')
+Base = automap_base()
+Base.prepare(engine_heroku, reflect=True)
+ttc_subway_2019 = Base.classes.ttc_subway_2019
+station_in_line = Base.classes.station_in_line
 
 # create route that renders index.html template
 @app.route("/")
@@ -61,10 +28,9 @@ def home():
 # create route to query database and send jsonified results for delay data    
 @app.route("/delay")
 def delay():
+    session=Session(engine_heroku)
 
-    results = db.session.query(
-    # database.column_name
-    ttc_subway_2019.date, 
+    sel=[ttc_subway_2019.date, 
     ttc_subway_2019.time, 
     ttc_subway_2019.day, 
     ttc_subway_2019.station,
@@ -79,8 +45,9 @@ def delay():
     ttc_subway_2019.longitude,
     ttc_subway_2019.line_name,
     ttc_subway_2019.month,
-    ttc_subway_2019.time_range
-    ).all()
+    ttc_subway_2019.time_range]
+
+    results = session.query(*sel).all()
 
     ttc_subway_2019_data = []
 
@@ -103,22 +70,22 @@ def delay():
             "month": result[14],
             "time_range": result[15]}
         )
-
+    session.close()
     return jsonify(ttc_subway_2019_data)
 
 # # create route to query database and send jsonified results for map data
 @app.route("/map")
 def map():
+    session=Session(engine_heroku)
 
-    results = db.session.query(
-        # database.column_name
-        station_in_line.station,
+    sel=[station_in_line.station,
         station_in_line.latitude,
         station_in_line.longitude,
         station_in_line.line_name,
         station_in_line.num_delays,
-        station_in_line.avg_delay_time
-        ).all()
+        station_in_line.avg_delay_time]
+
+    results = session.query(*sel).all()
 
     station_in_line_data = []
 
@@ -132,7 +99,7 @@ def map():
             "avg_delay_time": result[5]
             }
         )
-
+    session.close()
     return jsonify(station_in_line_data)
 
 if __name__ == "__main__":

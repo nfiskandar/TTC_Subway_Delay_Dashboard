@@ -17,7 +17,7 @@ var mymap = L.map("map", {
 
 var urlMap ="/map";
 var Map ="../data/station_in_line.csv";
-d3.csv(Map).then(function(data){
+d3.json(urlMap).then(function(data){
   console.log(data);	
 
 
