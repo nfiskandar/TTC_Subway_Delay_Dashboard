@@ -19,7 +19,6 @@ Base = automap_base()
 Base.prepare(engine_heroku, reflect=True)
 ttc_subway_2019 = Base.classes.ttc_subway_2019
 station_in_line = Base.classes.station_in_line
-
 # create route that renders index.html template
 @app.route("/")
 def home():
