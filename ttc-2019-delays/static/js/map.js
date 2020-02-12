@@ -37,14 +37,14 @@ for (var  a=0; a<38;  a++){
   // polyline to connect stops  
   var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
   line1coordinates.push(latlng1)  
-  console.log(data[a].station);
+  // console.log(data[a].station);
 };
-console.log(line1coordinates);
+// console.log(line1coordinates);
 
 //line connecting between station
 var polyline1 = L.polyline(line1coordinates, {
   color: "yellow",
-  weight: 55,
+  weight: 15,
   stroke: true
 }).addTo(mymap);
 
@@ -65,12 +65,12 @@ for (var i=38; i <69; i++) {
   // polyline to connect stops  
   var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
   line2coordinates.push(latlng2)  
-  console.log(data[i].station);
+  
 };
 console.log(line2coordinates);
 var polyline2 = L.polyline(line2coordinates, {
   color: "green",
-  weight: 55,
+  weight: 15,
   stroke: true
 }).addTo(mymap);
 
@@ -91,13 +91,13 @@ for (var j =70; j <76; j ++){
   // polyline to connect stops  
   var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
   line3coordinates.push(latlng3)  
-  console.log(data[j].station);
+  
 };
 
-console.log(line3coordinates);
+
 var polyline3 = L.polyline(line3coordinates, {
   color: "blue",
-  weight: 55,
+  weight: 15,
   stroke: true
 }).addTo(mymap);
 
@@ -117,13 +117,13 @@ for (var k =75; k<80;  k++){
   // polyline to connect stops  
   var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
   line4coordinates.push(latlng4)  
-  console.log(data[k].station);
+  
 };
-console.log(line4coordinates);
+// console.log(line4coordinates);
 
 var polyline4 = L.polyline(line4coordinates, {
   color: "purple",
-  weight: 55,
+  weight: 15,
   stroke: true
 }).addTo(mymap);
 
