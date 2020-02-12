@@ -134,21 +134,21 @@ function init(){
 			/* Group data by time and date groups */
 
 		// Group data by time groups
-		var init_time_data_group1 = init_time_data.filter(data=>data.time_range == time_groups[0]);
-		var init_time_data_group2 = init_time_data.filter(data=>data.time_range == time_groups[1]);
-		var init_time_data_group3 = init_time_data.filter(data=>data.time_range == time_groups[2]);
-		var init_time_data_group4 = init_time_data.filter(data=>data.time_range == time_groups[3]);
-		var init_time_data_group5 = init_time_data.filter(data=>data.time_range == time_groups[4]);
-		var init_time_data_group6 = init_time_data.filter(data=>data.time_range == time_groups[5]);
+		var init_time_data_group1 = init_time_data.filter(data=>data.time_range == time_groups[1]);
+		var init_time_data_group2 = init_time_data.filter(data=>data.time_range == time_groups[2]);
+		var init_time_data_group3 = init_time_data.filter(data=>data.time_range == time_groups[3]);
+		var init_time_data_group4 = init_time_data.filter(data=>data.time_range == time_groups[4]);
+		var init_time_data_group5 = init_time_data.filter(data=>data.time_range == time_groups[5]);
+		var init_time_data_group6 = init_time_data.filter(data=>data.time_range == time_groups[6]);
 		
 		// Group data by day groups
-		var init_day_data_group1 = init_day_data.filter(data=>data.day == days[0]);
-		var init_day_data_group2 = init_day_data.filter(data=>data.day == days[1]);
-		var init_day_data_group3 = init_day_data.filter(data=>data.day == days[2]);
-		var init_day_data_group4 = init_day_data.filter(data=>data.day == days[3]);
-		var init_day_data_group5 = init_day_data.filter(data=>data.day == days[4]);
-		var init_day_data_group6 = init_day_data.filter(data=>data.day == days[5]);
-		var init_day_data_group7 = init_day_data.filter(data=>data.day == days[6]);
+		var init_day_data_group1 = init_day_data.filter(data=>data.day == days[1]);
+		var init_day_data_group2 = init_day_data.filter(data=>data.day == days[2]);
+		var init_day_data_group3 = init_day_data.filter(data=>data.day == days[3]);
+		var init_day_data_group4 = init_day_data.filter(data=>data.day == days[4]);
+		var init_day_data_group5 = init_day_data.filter(data=>data.day == days[5]);
+		var init_day_data_group6 = init_day_data.filter(data=>data.day == days[6]);
+		var init_day_data_group7 = init_day_data.filter(data=>data.day == days[7]);
 		
 			/* Calculate total number of delays and average min delay by time and day groups */		
 		
@@ -194,7 +194,7 @@ function init(){
 		
 		// Define trace 1
 		var time_trace1 = {
-		  x: time_groups,
+		  x: time_groups.slice(1),
 		  y: init_time_graph_num_delays,
 		  name: 'Number of Delays',
 		  type: 'scatter',
@@ -203,7 +203,7 @@ function init(){
 
 		// Define trace 2
 		var time_trace2 = {
-		  x: time_groups,
+		  x: time_groups.slice(1),
 		  y: init_time_graph_avg_delay,
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
@@ -242,7 +242,7 @@ function init(){
 		
 		// Define trace 1
 		var day_trace1 = {
-		  x: days,
+		  x: days.slice(1),
 		  y: init_day_graph_num_delays,
 		  name: 'Number of Delays',
 		  type: 'scatter',
@@ -251,7 +251,7 @@ function init(){
 
 		// Define trace 2
 		var day_trace2 = {
-		  x: days,
+		  x: days.slice(1),
 		  y: init_day_graph_avg_delay,
 		  name: 'Average Delay In Minutes',
 		  yaxis: 'y2',
@@ -364,21 +364,21 @@ function optionChanged(){
 			/* Group data by time and date groups */
 
 		// Group data by time groups
-		var current_time_data_group1 = current_time_data.filter(data=>data.time_range == time_groups[0]);
-		var current_time_data_group2 = current_time_data.filter(data=>data.time_range == time_groups[1]);
-		var current_time_data_group3 = current_time_data.filter(data=>data.time_range == time_groups[2]);
-		var current_time_data_group4 = current_time_data.filter(data=>data.time_range == time_groups[3]);
-		var current_time_data_group5 = current_time_data.filter(data=>data.time_range == time_groups[4]);
-		var current_time_data_group6 = current_time_data.filter(data=>data.time_range == time_groups[5]);
+		var current_time_data_group1 = current_time_data.filter(data=>data.time_range == time_groups[1]);
+		var current_time_data_group2 = current_time_data.filter(data=>data.time_range == time_groups[2]);
+		var current_time_data_group3 = current_time_data.filter(data=>data.time_range == time_groups[3]);
+		var current_time_data_group4 = current_time_data.filter(data=>data.time_range == time_groups[4]);
+		var current_time_data_group5 = current_time_data.filter(data=>data.time_range == time_groups[5]);
+		var current_time_data_group6 = current_time_data.filter(data=>data.time_range == time_groups[6]);
 		
 		// Group data by day groups
-		var current_day_data_group1 = current_day_data.filter(data=>data.day == days[0]);
-		var current_day_data_group2 = current_day_data.filter(data=>data.day == days[1]);
-		var current_day_data_group3 = current_day_data.filter(data=>data.day == days[2]);
-		var current_day_data_group4 = current_day_data.filter(data=>data.day == days[3]);
-		var current_day_data_group5 = current_day_data.filter(data=>data.day == days[4]);
-		var current_day_data_group6 = current_day_data.filter(data=>data.day == days[5]);
-		var current_day_data_group7 = current_day_data.filter(data=>data.day == days[6]);
+		var current_day_data_group1 = current_day_data.filter(data=>data.day == days[1]);
+		var current_day_data_group2 = current_day_data.filter(data=>data.day == days[2]);
+		var current_day_data_group3 = current_day_data.filter(data=>data.day == days[3]);
+		var current_day_data_group4 = current_day_data.filter(data=>data.day == days[4]);
+		var current_day_data_group5 = current_day_data.filter(data=>data.day == days[5]);
+		var current_day_data_group6 = current_day_data.filter(data=>data.day == days[6]);
+		var current_day_data_group7 = current_day_data.filter(data=>data.day == days[7]);
 		
 			/* Calculate total number of delays and average min delay by time and day groups */
 		
