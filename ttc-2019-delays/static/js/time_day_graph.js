@@ -70,59 +70,65 @@ function init(){
 	d3.json(url).then(function(data){
 		
 		// Define init dropdown values 
-		var init_subway_value = subway_lines[0];
-		var init_month_value = months[0];
-		var init_time_value = time_groups[0];
-		var init_day_value = days[0];
+		var init_time_subway_value = subway_lines[0];
+		var init_time_month_value = months[0];
+		var init_time_day_value = days[0];
+		var init_day_subway_value = subway_lines[0];
+		var init_day_month_value = months[0];
+		var init_day_time_value = time_groups[0];
 		
 		// Print data
-		// console.log(init_subway_value);
-		// console.log(init_month_value);
-		
-			/* Filter data based on init filter values */
-		
-		// Filter data for the time graph based on init dropdown values
-		if (init_subway_value == 'All'){
+		// console.log(init_time_subway_value);
+		// console.log(init_time_month_value);
+		// console.log(init_time_day_value);
+		// console.log(init_day_subway_value);
+		// console.log(init_day_month_value);
+		// console.log(init_day_time_value);
+
+			/* Filter data for the time graph based on init dropdown values */
+			
+		if (init_time_subway_value == 'All'){
 			var init_time_data_temp1 = data;
 		}
 		else {
-			var init_time_data_temp1 = data.filter(data=>data.line_name == init_subway_value);
+			var init_time_data_temp1 = data.filter(data=>data.line_name == init_time_subway_value);
 		}
 
-		if (init_month_value == 'All'){
+		if (init_time_month_value == 'All'){
 			var init_time_data_temp2 = init_time_data_temp1;
 		}
 		else {
-			var init_time_data_temp2 = init_time_data_temp1.filter(data=>data.month == init_month_value);
+			var init_time_data_temp2 = init_time_data_temp1.filter(data=>data.month == init_time_month_value);
 		}
 
-		if (init_time_value == 'All'){
+		if (init_time_day_value == 'All'){
 			var init_time_data = init_time_data_temp2;
 		}
 		else {
-			var init_time_data = init_time_data_temp2.filter(data=>data.time_range == init_time_value);
+			var init_time_data = init_time_data_temp2.filter(data=>data.day == init_time_day_value);
 		}
 		
-		// Filter data for the day graph based on init dropdown values
-		if (init_subway_value == 'All'){
+			/* Filter data for the day graph based on init dropdown values */
+
+		if (init_day_subway_value == 'All'){
 			var init_day_data_temp1 = data;
 		}
 		else {
-			var init_day_data_temp1 = data.filter(data=>data.line_name == init_subway_value);
+			var init_day_data_temp1 = data.filter(data=>data.line_name == init_day_subway_value);
 		}
 
-		if (init_month_value == 'All'){
+		if (init_day_month_value == 'All'){
 			var init_day_data_temp2 = init_day_data_temp1;
 		}
 		else {
-			var init_day_data_temp2 = init_day_data_temp2.filter(data=>data.month == init_month_value);
+			var init_day_data_temp2 = init_day_data_temp1.filter(data=>data.month == init_day_month_value);
 		}
 
-		if (init_day_value == 'All'){
-			var init_day_data = init_time_data_temp2;
+		if (init_day_time_value == 'All'){
+			var init_day_data = init_day_data_temp2;
 		}
 		else {
-			var init_day_data = init_time_data_temp2.filter(data=>data.day == init_day_value);
+			var init_day_data = init_day_data_temp2.filter(data=>data.time_range == init_day_time_value);
 		}
 		
 			/* Group data by time and date groups */
@@ -296,45 +302,63 @@ function optionChanged(){
 		// Save current dropdown values 
 		var current_time_subway_value = d3.select("#time_subway_filter").property("value");
 		var current_time_month_value = d3.select("#time_month_filter").property("value");
+		var current_time_day_value = d3.select("#time_day_filter").property("value");
 		var current_day_subway_value = d3.select("#day_subway_filter").property("value");
 		var current_day_month_value = d3.select("#day_month_filter").property("value");
+		var current_day_time_value = d3.select("#day_time_filter").property("value");
 		
 		// Print data
 		// console.log(current_time_subway_value);
 		// console.log(current_time_month_value);
+		// console.log(current_time_day_value);
 		// console.log(current_day_subway_value);
 		// console.log(current_day_month_value);
+		// console.log(current_day_time_value);
 		
-			/* Filter data based on current filter values */
-        
-        // Filter data for the time graph based on current dropdown values
+			  /* Filter data for the time graph based on current dropdown values */
+
         if (current_time_subway_value == 'All'){
-            var current_time_data_temp = data;
+            var current_time_data_temp1 = data;
         }
         else {
-            var current_time_data_temp = data.filter(data=>data.line_name == current_time_subway_value);
+            var current_time_data_temp1 = data.filter(data=>data.line_name == current_time_subway_value);
         }
 
         if (current_time_month_value == 'All'){
-            var current_time_data = current_time_data_temp;
+            var current_time_data_temp2 = current_time_data_temp1;
         }
         else {
-            var current_time_data = current_time_data_temp.filter(data=>data.month == current_time_month_value);
+            var current_time_data_temp2 = current_time_data_temp1.filter(data=>data.month == current_time_month_value);
         }
-         
-        // Filter data for the day graph based on current dropdown values
+
+        if (current_time_day_value == 'All'){
+            var current_time_data = current_time_data_temp2;
+        }
+        else {
+            var current_time_data = current_time_data_temp2.filter(data=>data.day == current_time_day_value);
+        }
+        
+	   		/* Filter data for the day graph based on current dropdown values */
+	   
         if (current_day_subway_value == 'All'){
-            var current_day_data_temp = data;
+            var current_day_data_temp1 = data;
         }
         else {
-            var current_day_data_temp = data.filter(data=>data.line_name == current_day_subway_value);
+            var current_day_data_temp1 = data.filter(data=>data.line_name == current_day_subway_value);
         }
 
         if (current_day_month_value == 'All'){
-            var current_day_data = current_day_data_temp;
+            var current_day_data_temp2 = current_day_data_temp1;
         }
         else {
-            var current_day_data = current_day_data_temp.filter(data=>data.month == current_day_month_value);
+            var current_day_data_temp2 = current_day_data_temp1.filter(data=>data.month == current_day_month_value);
+        }
+
+        if (current_day_time_value == 'All'){
+            var current_day_data = current_day_data_temp2;
+        }
+        else {
+            var current_day_data = current_day_data_temp2.filter(data=>data.time_range == current_day_time_value);
         }
        
 			/* Group data by time and date groups */
