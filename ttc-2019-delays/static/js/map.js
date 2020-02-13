@@ -125,7 +125,7 @@ for (var j =69; j <75; j ++){
       radius: 60
     }).bindPopup("<h3>" + data[j].station +
     "</h3><hr><p>Number of Delay Happened: " + data[j].num_delays + 
-    " minutes</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>").addTo(mymap);
+    "</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>").addTo(mymap);
   // lines3.push(circle3);
   };
 
@@ -149,7 +149,7 @@ for (var k =75; k<80;  k++){
       radius: 60
     }).bindPopup("<h3>" + data[k].station +
     "</h3><hr><p>Number of Delay Happened: " + data[k].num_delays + 
-    " minutes</p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>").addTo(mymap);
+    " </p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>").addTo(mymap);
 
   //  lines4.push(circle4);
 };
