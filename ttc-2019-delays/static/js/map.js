@@ -1,152 +1,165 @@
-var mymap = L.map("map", {
-  center: [43.7131, -79.3858],
-  zoom: 11
-});
 
-// Adding a tile layer (the background map image) to our map
-// We use the addTo method to add objects to our map
-L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+//setting tile Layers 
+var street = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.streets",
   accessToken: API_KEY
-}).addTo(mymap);
+});
 
+var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.dark",
+  accessToken: API_KEY
+})
 
+var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.satellite",
+  accessToken: API_KEY
+})
+
+var layers = {
+  Street: street,
+  Dark: dark,
+  Satellite: satellite
+}
+
+var mymap = L.map("map", {
+  center: [43.7131, -79.3858],
+  zoom: 11,
+  layers:[    
+    layers.Dark,
+    layers.Satellite,
+    layers.Street,
+  ]
+});
+
+var baselayers = {  
+  "Nightview":layers.Dark,
+  "Satellite":layers.Satellite,
+  "Dayview":layers.Street
+}
+
+L.control.layers(baselayers, null).addTo(mymap);
+
+// // setting variable to hold the layers
+// var lines1 = [];
+// var lines2 = [];
+// var lines3 = [];
+// var lines4 = [];
+
+// load data 
 var urlMap ="/map";
 // var urlMap ="../data/station_in_line.csv";
 
 d3.json(urlMap).then(function(data){
-console.log(data);	
+// // console.log(data);	
 
-
-//line1
+// //line1
 var line1coordinates=[];
 for (var  a=0; a<38;  a++){
-var circle1 = L.circle( [parseFloat(data[a].latitude), parseFloat(data[a].longitude)], {
+  var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
+  line1coordinates.push(latlng1);
+  var circle1 = L.circle( latlng1, {
       color: 'yellow',
       fillColor: 'red',
       fillOpacity: 0.7,
       radius: 60
-    }).addTo(mymap);
-//popup
-circle1.bindPopup("<h3>" + data[a].station +
-"</h3><hr><p>Number of Delay : " + data[a].num_delays + 
-" </p><hr><p> Avg Delay Time: " + data[a].avg_delay_time + " minutes </p>"); 
-// polyline to connect stops  
-var latlng1 = [parseFloat(data[a].latitude), parseFloat(data[a].longitude)];
-line1coordinates.push(latlng1)  
+    }).bindPopup("<h3>" + data[a].station +
+    "</h3><hr><p>Number of Delay Happened: " + data[a].num_delays + 
+    " </p><hr><p> Avg Delay Time: " + data[a].avg_delay_time + " minutes </p>").addTo(mymap);
+  
 // console.log(data[a].station);
+// lines1.push(circle1);
 };
-// console.log(line1coordinates);
+console.log(line1coordinates);
 
 //line connecting between station
-var polyline1 = L.polyline(line1coordinates, {
+var line1 = L.polyline(line1coordinates, {
 color: "yellow",
-weight: 2,
+weight: 1,
 stroke: true
 }).addTo(mymap);
+// lines1.push(line1);
+
 
 
 //line 2
 var line2coordinates =[];
 for (var i=38; i <69; i++) {
-var circle2 = L.circle( [parseFloat(data[i].latitude), parseFloat(data[i].longitude)], {
+  var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
+  line2coordinates.push(latlng2); 
+
+  var circle2 = L.circle( latlng2, {
       color: 'green',
       fillColor: 'red',
-      fillOpacity: 0.5,
+      fillOpacity: 0.7,
       radius: 60
-    }).addTo(mymap);
-//popup
-circle2.bindPopup("<h3>" + data[i].station +
-"</h3><hr><p>TNumber of Delay :" + data[i].num_delays + 
-" minutes</p><hr><p> Avg Delay Time: " + data[i].avg_delay_time + " minutes</p>"); 
-// polyline to connect stops  
-var latlng2 = [parseFloat(data[i].latitude), parseFloat(data[i].longitude)];
-line2coordinates.push(latlng2)  
+    }).bindPopup("<h3>" + data[i].station + "</h3><hr><p>TNumber of Delay Happened:" + data[i].num_delays + 
+   " minutes</p><hr><p> Avg Delay Time: " + data[i].avg_delay_time + " minutes</p>").addTo(mymap); 
+
+// lines2.push(circle2);
 
 };
-console.log(line2coordinates);
-var polyline2 = L.polyline(line2coordinates, {
+// lines to connect stops
+var line2 = L.polyline(line2coordinates, {
 color: "green",
-weight: 2,
+weight: 1,
 stroke: true
 }).addTo(mymap);
+// lines2.push(line2);
 
 
 //line3
 var line3coordinates=[];
 for (var j =69; j <75; j ++){
-var circle3 = L.circle( [parseFloat(data[j].latitude), parseFloat(data[j].longitude)], {
+  var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
+  line3coordinates.push(latlng3);
+  var circle3 = L.circle(latlng3, {
       color: 'blue',
       fillColor: 'red',
       fillOpacity: 0.7,
       radius: 60
-    }).addTo(mymap);
-//popup
-circle3.bindPopup("<h3>" + data[j].station +
-"</h3><hr><p>Number of Delay " + data[j].num_delays + 
-" minutes</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>"); 
-// polyline to connect stops  
-var latlng3 = [parseFloat(data[j].latitude), parseFloat(data[j].longitude)];
-line3coordinates.push(latlng3)  
+    }).bindPopup("<h3>" + data[j].station +
+    "</h3><hr><p>Number of Delay " + data[j].num_delays + 
+    " minutes</p><hr><p> Avg Delay Time: " + data[j].avg_delay_time + " minutes</p>").addTo(mymap);
+  // lines3.push(circle3);
+  };
 
-};
+  var line3 = L.polyline(line3coordinates, {
+      color: "blue",
+      weight: 1,
+      stroke: true
+      }).addTo(mymap);
 
-
-var polyline3 = L.polyline(line3coordinates, {
-color: "blue",
-weight: 2,
-stroke: true
-}).addTo(mymap);
+  // lines3.push(line3);
 
 //line4
 var line4coordinates=[];
 for (var k =75; k<80;  k++){
-var circle4 = L.circle( [parseFloat(data[k].latitude), parseFloat(data[k].longitude)], {
+  var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
+  line4coordinates.push(latlng4);
+  var circle4 = L.circle( [parseFloat(data[k].latitude), parseFloat(data[k].longitude)], {
       color: 'purple',
       fillColor: 'red',
       fillOpacity: 0.7,
       radius: 60
-    }).addTo(mymap);
-//popup
-circle4.bindPopup("<h3>" + data[k].station +
-"</h3><hr><p>Number of Delay " + data[k].num_delays + 
-" minutes</p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>"); 
-// polyline to connect stops  
-var latlng4 = [parseFloat(data[k].latitude), parseFloat(data[k].longitude)];
-line4coordinates.push(latlng4)  
+    }).bindPopup("<h3>" + data[k].station +
+    "</h3><hr><p>Number of Delay " + data[k].num_delays + 
+    " minutes</p><hr><p> Avg Delay Time: " + data[k].avg_delay_time + " minutes</p>").addTo(mymap);
 
+  //  lines4.push(circle4);
 };
-// console.log(line4coordinates);
 
-var polyline4 = L.polyline(line4coordinates, {
+
+var line4 = L.polyline(line4coordinates, {
 color: "purple",
-weight: 2,
+weight: 1,
 stroke: true
 }).addTo(mymap);
 
-// for (var x=0; x<data.length; x++) {
-// var circle = L.circle( [parseFloat(data[x].latitude), parseFloat(data[x].longitude)], {
-//   color: 'red',
-//   fillColor: 'red',
-//   fillOpacity: 0.7,
-//   radius: 60
-// }).addTo(mymap);
-// //popup
-// circle.bindPopup("<h3>" + data[x].station +
-// "</h3><hr><p>Total Delay Time: " + data[x].num_delays + 
-// " minutes</p><hr><p> Avg Delay Time: " + data[x].avg_delay_time + " minutes</p>"); 
-// }
-
-
-
+// lines4.push(line4);
 });
-
-
-
-
-
-
-
- 
